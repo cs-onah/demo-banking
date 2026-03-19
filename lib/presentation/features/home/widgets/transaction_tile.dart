@@ -1,8 +1,12 @@
+import 'package:demo_banking/data/models/transactions.dart';
 import 'package:demo_banking/presentation/shared/utils/context_extension.dart';
+import 'package:demo_banking/presentation/shared/utils/datetime_extension.dart';
+import 'package:demo_banking/presentation/shared/utils/number_util.dart';
 import 'package:flutter/material.dart';
 
 class TransactionTile extends StatelessWidget {
-  const TransactionTile({super.key});
+  final Transaction? transaction;
+  const TransactionTile({super.key, this.transaction});
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +23,20 @@ class TransactionTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Shopping",
+                  transaction?.name ?? "Transaction name",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 const SizedBox(height: 8),
-                Text('Tue 12.05.2021', style: TextStyle(color: Colors.grey)),
+                Text(
+                  transaction?.transactionDate?.fullFormat ?? "Date",
+                  style: TextStyle(color: Colors.grey),
+                ),
               ],
             ),
           ),
           const SizedBox(width: 12),
           Text(
-            "\$29.90",
+            "\$${NumberUtil.formatNumber(transaction?.amount) ?? '--'}",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ],

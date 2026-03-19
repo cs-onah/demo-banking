@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:demo_banking/presentation/features/home/viewmodel/profile_viewmodel.dart';
 import 'package:demo_banking/presentation/shared/utils/context_extension.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class ProfileInfoSection extends ConsumerWidget {
               child: CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.grey[300],
-                backgroundImage: NetworkImage(profile?.avatar ?? ''),
+                backgroundImage: CachedNetworkImageProvider(profile?.avatar ?? ''),
               ),
             ),
           ),

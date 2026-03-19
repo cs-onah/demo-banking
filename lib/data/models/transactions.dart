@@ -1,7 +1,7 @@
 class Transaction {
   String? name;
   DateTime? transactionDate;
-  String? amount;
+  double? amount;
   String? userId;
   String? id;
 
@@ -16,22 +16,23 @@ class Transaction {
   Transaction copyWith({
     String? name,
     DateTime? transactionDate,
-    String? amount,
+    double? amount,
     String? userId,
     String? id,
-  }) =>
-      Transaction(
-        name: name ?? this.name,
-        transactionDate: transactionDate ?? this.transactionDate,
-        amount: amount ?? this.amount,
-        userId: userId ?? this.userId,
-        id: id ?? this.id,
-      );
+  }) => Transaction(
+    name: name ?? this.name,
+    transactionDate: transactionDate ?? this.transactionDate,
+    amount: amount ?? this.amount,
+    userId: userId ?? this.userId,
+    id: id ?? this.id,
+  );
 
   factory Transaction.fromJson(Map<String, dynamic> json) => Transaction(
     name: json["name"],
-    transactionDate: json["transactionDate"] == null ? null : DateTime.parse(json["transactionDate"]),
-    amount: json["amount"],
+    transactionDate: json["transactionDate"] == null
+        ? null
+        : DateTime.parse(json["transactionDate"]),
+    amount: double.tryParse(json["amount"]),
     userId: json["userId"],
     id: json["id"],
   );
