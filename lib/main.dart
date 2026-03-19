@@ -1,4 +1,3 @@
-import 'package:demo_banking/presentation/features/home/view/nav_view.dart';
 import 'package:demo_banking/presentation/features/home/view/splash_view.dart';
 import 'package:demo_banking/presentation/theme/light_theme.dart';
 import 'package:flutter/material.dart';

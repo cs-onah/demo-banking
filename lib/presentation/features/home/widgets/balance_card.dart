@@ -42,7 +42,7 @@ class BalanceCard extends ConsumerWidget {
                   const SizedBox(height: 12),
                   Text(
                     "\$1${NumberUtil.formatNumber(bankInfo.data.balance) ?? '--'}",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900),
                   ),
                 ],
               ),

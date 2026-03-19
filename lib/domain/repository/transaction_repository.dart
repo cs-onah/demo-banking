@@ -18,8 +18,13 @@ class TransactionRepository {
   }
 
   Future<List<Transaction>> getTransactions(String userId) async {
-    // TODO: scope transactions to userId;
-    final response = await api.call(UrlConfig.transactions, RequestMethod.get);
+    // Didn't scope transactions to userId as feature is not
+    // available in mockapi.io free plan
+    final response = await api.call(
+      UrlConfig.transactions,
+      RequestMethod.get,
+      showLog: true,
+    );
     return List<Transaction>.from(
       response.data.map((x) => Transaction.fromJson(x)),
     );

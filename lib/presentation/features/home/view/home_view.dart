@@ -65,10 +65,10 @@ class _HomeViewState extends ConsumerState<HomeView> {
                   return switch (transactions) {
                     LoadingAppState() => ListView.separated(
                       itemCount: 3,
-                      separatorBuilder: (_, __) => const SizedBox(height: 12),
+                      separatorBuilder: (_, _) => const SizedBox(height: 12),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (_, __) => FadeShimmer(
+                      itemBuilder: (_, _) => FadeShimmer(
                         width: double.infinity,
                         height: 80,
                         radius: 10,
@@ -77,7 +77,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                     ),
                     ListAppState() => ListView.separated(
                       itemCount: transactions.data.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 12),
+                      separatorBuilder: (_, _) => const SizedBox(height: 12),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
