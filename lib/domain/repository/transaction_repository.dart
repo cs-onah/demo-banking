@@ -8,15 +8,18 @@ class TransactionRepository {
   final ApiService api;
   TransactionRepository(this.api);
 
-  // userId: bfebe6806defe1569fcd6b2f
-  Future<BankInfo> getBankInfo(String userId) async {
-    final response = await api.call(UrlConfig.bankInfo, RequestMethod.get);
+  Future<BankInfo> getBankInfo(String walletId) async {
+    final response = await api.call(
+      UrlConfig.bankInfo(walletId),
+      RequestMethod.get,
+      showLog: true,
+    );
     return BankInfo.fromJson(response.data);
   }
 
-  // userId: aedb5da001f9f6e17631ad6b
   Future<List<Transaction>> getTransactions(String userId) async {
-    final response = await api.call(UrlConfig.bankInfo, RequestMethod.get);
+    // TODO: scope transactions to userId;
+    final response = await api.call(UrlConfig.transactions, RequestMethod.get);
     return List<Transaction>.from(
       response.data.map((x) => Transaction.fromJson(x)),
     );

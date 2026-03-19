@@ -1,12 +1,30 @@
 import 'package:demo_banking/core/constants/image_path.dart';
+import 'package:demo_banking/presentation/features/home/viewmodel/bank_info_viewmodel.dart';
+import 'package:demo_banking/presentation/features/home/viewmodel/profile_viewmodel.dart';
 import 'package:demo_banking/presentation/features/home/widgets/balance_card.dart';
 import 'package:demo_banking/presentation/features/home/widgets/profile_info_section.dart';
 import 'package:demo_banking/presentation/features/home/widgets/transaction_tile.dart';
+import 'package:demo_banking/presentation/features/transactions/viewmodel/transaction_viewmodel.dart';
 import 'package:demo_banking/presentation/shared/utils/context_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
+  @override
+  ConsumerState<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends ConsumerState<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final user = ref.read(profileVm).getData;
+      ref.read(bankInfoVm.notifier).getBankInfo(user?.walletId);
+      ref.read(transactionVm.notifier).getTransactions(user?.id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

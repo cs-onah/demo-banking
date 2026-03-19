@@ -19,10 +19,11 @@ class BankInfoViewmodel extends Notifier<AppState<BankInfo>> {
     return InitialAppState();
   }
 
-  Future getProfile(String userId) async {
+  Future getBankInfo(String? walletId) async {
     try {
+      if(walletId == null) throw "WalletId required";
       state = LoadingAppState();
-      final user = await repo.getBankInfo(userId);
+      final user = await repo.getBankInfo(walletId);
       state = SuccessAppState(user);
     } catch (error) {
       state = FailureAppState(error);

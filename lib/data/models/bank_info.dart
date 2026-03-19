@@ -1,6 +1,6 @@
 class BankInfo {
   String? userId;
-  String? balance;
+  double? balance;
   String? cardNumber;
   DateTime? expiryDate;
   String? provider;
@@ -17,7 +17,7 @@ class BankInfo {
 
   BankInfo copyWith({
     String? userId,
-    String? balance,
+    double? balance,
     String? cardNumber,
     DateTime? expiryDate,
     String? provider,
@@ -33,7 +33,7 @@ class BankInfo {
 
   factory BankInfo.fromJson(Map<String, dynamic> json) => BankInfo(
     userId: json["userId"],
-    balance: json["balance"],
+    balance: double.tryParse(json["balance"] ?? ''),
     cardNumber: json["cardNumber"],
     expiryDate: json["expiryDate"] == null
         ? null

@@ -19,8 +19,9 @@ class TransactionViewmodel extends Notifier<AppState<Transaction>> {
     return InitialAppState();
   }
 
-  Future getProfile(String userId) async {
+  Future getTransactions(String? userId) async {
     try {
+      if(userId == null) throw "UserId required";
       state = LoadingAppState();
       final transactions = await repo.getTransactions(userId);
       state = ListAppState(transactions);
