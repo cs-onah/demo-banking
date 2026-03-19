@@ -6,8 +6,6 @@ A simple demo of a banking application
 
 <p align="center">
 <img height="567" src="https://github.com/cs-onah/demo-banking/blob/main/docs/flow.gif" alt="Flow Video" loading="eager">
-</p>
-<p align="center">
 <img height="567" src="https://github.com/cs-onah/demo-banking/blob/main/docs/screenshot.png" alt="App Screenshot" loading="eager">
 </p>
 
